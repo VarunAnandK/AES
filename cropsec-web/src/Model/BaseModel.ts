@@ -4,4 +4,6 @@ export class BaseModel {
   created_on: string;
   updated_by_id: number;
   updated_on: string;
+  company_id:number;
+  status : string;
 }

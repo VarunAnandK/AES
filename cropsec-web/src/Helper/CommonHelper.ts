@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-// import { NgxSpinnerService } from 'ngx-spinner';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { user } from 'src/Model/user';
 @Injectable()
 export class CommonHelper {
-  //constructor(private spinner: NgxSpinnerService, private toastr: ToastrService) {
-    constructor(){
-    //this.ApiURL = environment.API_URL;
-    this.StorageName = "AESERPUserDetail";
+  constructor(private toastr: ToastrService) {
+    this.ApiURL = environment.API_URL;
+    this.StorageName = environment.API_URL + "_User";
   }
   ApiURL: string;
   StorageName: string;
@@ -93,10 +91,10 @@ export class CommonHelper {
     return window.localStorage.removeItem(name);
   }
   SucessToastr(message: string, title: string) {
-  //  this.toastr.success(message, title);
+    this.toastr.success(message, title);
   }
   ErrorToastr(message: string, title: string) {
-   // this.toastr.error(message, title);
+   this.toastr.error(message, title);
   }
   ShowSpinner() {
     //this.spinner.show();

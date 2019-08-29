@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 */
 
 Route::post('Login', 'UserController@Login');
-
 Route::middleware('APIToken')->group(function () {
     Route::post('Register', 'UserController@Register');
 });
