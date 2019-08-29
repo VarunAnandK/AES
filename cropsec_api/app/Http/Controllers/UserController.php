@@ -18,6 +18,11 @@ class UserController extends Controller
         $this->Repository = $repository;
         $this->Repository->model = new User();
     }
+    public function UserList()
+    {
+        return $this->Repository->GetAll();
+    }
+
     public function Register(Request $request)
     {
         $data = $request->all();
@@ -38,9 +43,7 @@ class UserController extends Controller
                     "User" => $data,
                 ];
                 return response(["Type" => "S", "Message" => "Login successfully", "AdditionalData" => $resultdate]);
-            }
-            else
-            {
+            } else {
                 return response(["Type" => "E", "Message" => "Invalid password", "AdditionalData" => "", "AdditionalDate" => ""]);
             }
         } else {

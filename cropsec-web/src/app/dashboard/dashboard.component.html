@@ -1,1 +1,36 @@
-<p>dashboard works!</p>
+<label>DateTimePicker</label>
+<br/>
+<button (click)="Validate()">Validate</button>
+<br/>
+<label>Numeric Textbox</label>
+<br/>
+<input id="numberic" [UIIsDecimal]="true" [(ngModel)]="numberic" appUinumerictextbox style="width: 100%;" />
+<br/>
+
+<label>DateTimePicker</label>
+<br/>
+<input id="datetimepicker" [(ngModel)]="DateTimePicker" [UIDefaultDate]="true" appUidatatimepicker style="width: 100%;" />
+<br/>
+<label>DatePicker</label>
+<br/>
+<input id="datepicker" [(ngModel)]="DatePicker" [UIDefaultDate]="true" appUidatapicker style="width: 100%;" />
+<br/>
+<label>Dropdown</label>
+<br/>
+<!-- <select [(ngModel)]="DropdownID" appUidropdown id="size" (UIOnChange)="DDChange($event)" style="width: 100%;">
+</select> -->
+<br/>
+<label>Dropdown URL</label>
+<br/>
+<select [(ngModel)]="DropdownID" appUidropdown id="sizeurl" UIURL="UserList" UITextField="name" UIValueField="id" (UIOnChange)="DDChange($event)" style="width: 100%;">
+</select>
+
+<br/>
+<label>Dropdown URL Multiple</label>
+<br/>
+<select [(ngModel)]="MultiDropdownID" appUidropdownmultiple id="mulsizeurl" UIURL="UserList" UITextField="name" UIValueField="id" (UIOnChange)="DDChange($event)" style="width: 100%;">
+</select>
+<br/>
+<label>Grid</label>
+<br/>
+<div id="grid" appUigrid [UIColumns]="GridModel" UIURL="UserList"></div>

@@ -6,7 +6,7 @@ import { CommonHelper } from './CommonHelper';
 
 @Injectable()
 export class AlphaInterceptor implements HttpInterceptor {
-  constructor(private helper : CommonHelper) { }
+  constructor(private helper: CommonHelper) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     var token = this.helper.GetCurentUser().api_token;
     // const updatedRequest = request.clone({
