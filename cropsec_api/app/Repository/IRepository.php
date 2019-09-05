@@ -11,7 +11,7 @@ interface IRepository
 
     public function Insert(array $data);
 
-    public function Update(array $data, $id);
+    public function Update(array $data);
 
     public function Delete($id);
 

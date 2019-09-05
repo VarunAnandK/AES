@@ -21,7 +21,7 @@ const routes: Routes = [
     path: 'Admin/UserList',
     component: MainComponent,
     canActivate: [AuthGuard],
-    loadChildren: './user/list/list.module#ListModule'
+    loadChildren: './Admin/User/user-list/user-list.module#UserListModule'
   },
 
 ];

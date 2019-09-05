@@ -50,4 +50,28 @@ class UserController extends Controller
             return response(["Type" => "E", "Message" => "Invalid user name", "AdditionalData" => "", "AdditionalDate" => ""]);
         }
     }
+
+    public function UserInsert(Request $request)
+    {
+        try {
+            $data = $request->all();
+            $data["password"] = Crypt::encrypt($data["password"]);;
+            return $this->Repository->Insert($data);
+            return response(["Type" => "S", "Message" => "User inserted successfully", "AdditionalData" => [], "Id" => $data["id"]]);
+        } catch (QueryException $exception) {
+            return response(["Type" => "E", "Message" => $exception->errorInfo[2]]);
+        }
+    }
+
+    public function UserUpdate(Request $request)
+    {
+        try {
+            $data = $request->all();
+            $data["password"] = Crypt::encrypt($data["password"]);;
+            return $this->Repository->Update($data);
+            return response(["Type" => "S", "Message" => "User updated successfully"]);
+        } catch (QueryException $exception) {
+            return response(["Type" => "E", "Message" => $exception->errorInfo[2]]);
+        }
+    }
 }

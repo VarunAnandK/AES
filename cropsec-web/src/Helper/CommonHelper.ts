@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { environment } from 'src/environments/environment';
-import { user } from 'src/Model/user';
+import { Injectable } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
+import { environment } from "src/environments/environment";
+import { user } from "src/Model/user";
+declare var $: any;
 @Injectable()
 export class CommonHelper {
   constructor(private toastr: ToastrService) {
@@ -18,19 +19,31 @@ export class CommonHelper {
     let user = JSON.parse(window.localStorage.getItem(this.StorageName));
     if (user == null) {
       return 0;
-    }
-    else {
+    } else {
       return user.id;
     }
+  }
+  GridRefresh(Id) {
+    $(document).ready(function() {
+      $("#" + Id).data("kendoGrid").dataSource.read();
+    });
   }
   GetCurrentPageAndModule(data: string) {
     this.CurrentPage = [];
     this.CurrentPage.push(data.split("/")[0]);
     this.CurrentPage.push(data.split("/")[1]);
     if (data.split("/")[1].endsWith("List"))
-      this.CurrentPage.push(data.split("/")[1].endsWith("List") ? data.split("/")[1] : data.split("/")[1] + "List");
+      this.CurrentPage.push(
+        data.split("/")[1].endsWith("List")
+          ? data.split("/")[1]
+          : data.split("/")[1] + "List"
+      );
     else if (data.split("/")[2])
-      this.CurrentPage.push(data.split("/")[1].endsWith("List") ? data.split("/")[1] : data.split("/")[1] + "List");
+      this.CurrentPage.push(
+        data.split("/")[1].endsWith("List")
+          ? data.split("/")[1]
+          : data.split("/")[1] + "List"
+      );
   }
 
   GetCurentUser() {
@@ -44,7 +57,8 @@ export class CommonHelper {
   }
 
   GetStimulsoftKey() {
-    return "6vJhGtLLLz2GNviWmUTrhSqnOItdDwjBylQzQcAOiHlrzAZzmWmSnQQ4gKFiZ4LJpJv//QjFVXxcHAVb" +
+    return (
+      "6vJhGtLLLz2GNviWmUTrhSqnOItdDwjBylQzQcAOiHlrzAZzmWmSnQQ4gKFiZ4LJpJv//QjFVXxcHAVb" +
       "zZfXjyOGPmj/m+BEjr2Z14dWeqLFNGF74GELbTTKs2+Le/9cDIWdGNnOpEK2aGdYllauMPLQsiScC521" +
       "JIEYSdOspiRHSLcegksxfNedJjyIjGlfI2YrddBRWGiO+uWOHE5oz9hLG8VPBSRo60KmgkscM5X+7+aQ" +
       "+6vzKKOC2XB+e6BMQC5qNVBUblfGQR2EjNLZKmSJtvek7IbG/OK+XP0j2bwicyJUGC0pyLHqctr3BpcO" +
@@ -72,17 +86,16 @@ export class CommonHelper {
       "7tISLCEg6hjAV9+Hx6zOWpozg7aZMtikT+43uWakRkU/H+ITIGhqxuQhkZkmIddWrjD5lJtdUOSa0FWu" +
       "969EDp4XB8dmUKSwyrkgOHZu6DutFW5ArtqhNejthWt/sV1FkSbvdd26zn1fSO4pDa4pDmcSo+l/4DCh" +
       "ZbEyICc7IQrPjVuRUlVGuAVksZTBX+VYIip8LsJSFLHo7Dnn4QT3qDNIh8aAcY3fnHhph4G5ekbvGOw3" +
-      "+m1qqs8t0m89vdK7k8nJTw==";
+      "+m1qqs8t0m89vdK7k8nJTw=="
+    );
   }
 
   SetLocalStorage(name: string, data: any) {
     window.localStorage.setItem(name, JSON.stringify(data));
   }
   GetLocalStorage(name: string, jsonformat: boolean = false) {
-    if (jsonformat)
-      return JSON.parse(window.localStorage.getItem(name));
-    else
-      return window.localStorage.getItem(name);
+    if (jsonformat) return JSON.parse(window.localStorage.getItem(name));
+    else return window.localStorage.getItem(name);
   }
   DeleteAllLocalStorage() {
     return window.localStorage.clear();
@@ -94,27 +107,21 @@ export class CommonHelper {
     this.toastr.success(message, title);
   }
   ErrorToastr(message: string, title: string) {
-   this.toastr.error(message, title);
+    this.toastr.error(message, title);
   }
   ShowSpinner() {
     //this.spinner.show();
   }
   HideSpinner() {
-   // this.spinner.hide();
+    // this.spinner.hide();
   }
   NullOrEmpty(data) {
-    if (data == null)
-      return true;
-    else if (data == undefined)
-      return true;
-    else if (!isNaN(data))
-      return true;
-    else if (data == '')
-      return true;
-    else
-      return false;
+    if (data == null) return true;
+    else if (data == undefined) return true;
+    else if (!isNaN(data)) return true;
+    else if (data == "") return true;
+    else return false;
   }
-
 }
 
 export class ModuleModel {

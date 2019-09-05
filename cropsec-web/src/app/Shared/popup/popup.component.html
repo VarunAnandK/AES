@@ -1,0 +1,16 @@
+<div class="modal fade" [id]="config.Id" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{config.Title}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="onPopupClicked()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ng-template appPopup></ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+

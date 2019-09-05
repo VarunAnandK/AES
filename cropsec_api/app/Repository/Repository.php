@@ -41,7 +41,7 @@ class Repository implements IRepository
         }
     }
 
-    public function Update(array $data, $id)
+    public function Update(array $data)
     {
         try {
             if (CommonHelper::$CurrentUser == null) {
@@ -49,7 +49,7 @@ class Repository implements IRepository
             } else {
                 $data["updated_by_id"] = CommonHelper::$CurrentUser->id;
             }
-            $result = $this->model->where('id', $id);
+            $result = $this->model->where('id', $data['id']);
             $result->update($data);
             return response(["Type" => "S", "Message" => "Data updated successfully"]);
         } catch (QueryException $exception) {

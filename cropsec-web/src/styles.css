@@ -1,3 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+
 @import "~ngx-toastr/toastr";
+
+
+
+.modal {
+  z-index : 9999 !important
+}
+
+
+
+.widget-body {
+  background-color: white;
+}
+
+.k-grid-header th.k-header > .k-link {
+  color: black;
+}
+
+.k-grid-content > table > tbody > tr {
+  background-color: #FAFAFA;
+  color: black;
+}
+
+.k-grid-content > table > tbody > .k-alt {
+  background-color: white;
+  color: black;
+}
+
+
+.k-grid table td {
+  border: 0.1px solid;
+  border-color: gainsboro;
+}
+
+.k-grid-header .k-header, .k-grid-header .k-header .k-link, .k-grid-header .k-link, .k-grid-header .k-link:link, .k-pager-info, .k-scheduler-agendaview .k-scheduler-datecolumn, .k-scheduler-header {
+  color: black;
+}
+
+.k-filter-row th, .k-grid-header th.k-header {
+  text-align: inherit !important;
+}
+
+.k-grid td
+{
+  text-align: inherit !important;
+
+}
+.k-filter-row th, .k-grid-header th.k-header{
+  background-color : cadetblue;
+}
+
+
+.error-message {
+  color: red;
+}
+.k-button {
+  display: initial !important;
+}

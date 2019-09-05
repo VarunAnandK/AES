@@ -22,7 +22,7 @@ export class CommonService {
     }
     else {
       model.updated_by_id = this.helper.GetUserId();
-      return this.httpClient.post(`${this.helper.ApiURL}/${UrlName}Update/${model.id}`, model);
+      return this.httpClient.post(`${this.helper.ApiURL}/${UrlName}Update`, model);
     }
   }
   public CommonPost(model: any, UrlName: string) {
