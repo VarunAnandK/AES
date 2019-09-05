@@ -59,7 +59,7 @@ export class PopupComponent implements AfterViewInit {
     this.popupRef.close();
   }
 
-  onPopupClicked(evt: MouseEvent) {
+  onPopupClicked() {
    // this.popupRef.close();
    $("#" + this.config.Id).modal("hide");
   }
