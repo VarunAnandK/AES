@@ -1,0 +1,37 @@
+<button type="button" *ngIf="CompanyData.id == 0" [disabled]="CompanyForm.invalid"  class="btn btn-success" style="width: 100px;" (click)="CreateOrUpdate()">Save</button>
+<button type="button" *ngIf="CompanyData.id > 0" [disabled]="CompanyForm.invalid" class="btn btn-success" style="width: 100px;" (click)="CreateOrUpdate()">Update</button>
+<hr>
+<form [formGroup]="CompanyForm">
+    <div class="row">
+      <div class="col-12">
+          <app-label Required="true" LabelText="Name" ></app-label>
+        <input class="form-control" formControlName="name" [(ngModel)]="CompanyData.name" />
+        <app-validation-message propertyName="name" [MessageArray]="CompanyValidationMessages" [FormGroupName]="CompanyForm"></app-validation-message>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <app-label Required="true" LabelText="Address" ></app-label>
+          <input class="form-control" formControlName="address" [(ngModel)]="CompanyData.address" />
+          <app-validation-message propertyName="address" [MessageArray]="CompanyValidationMessages" [FormGroupName]="CompanyForm"></app-validation-message>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-4">
+              <app-label Required="true" LabelText="user Name" ></app-label>
+            <input class="form-control" formControlName="user_name" [(ngModel)]="CompanyData.user_name" />
+            <app-validation-message propertyName="user_name" [MessageArray]="CompanyValidationMessages" [FormGroupName]="CompanyForm"></app-validation-message>
+          </div>
+              <div class="col-4">
+                  <app-label Required="true" LabelText="Password" ></app-label>
+                <input class="form-control" formControlName="password" [(ngModel)]="CompanyData.password" />
+                <app-validation-message propertyName="password" [MessageArray]="CompanyValidationMessages" [FormGroupName]="CompanyForm"></app-validation-message>
+              </div>
+              <div class="col-4">
+                  <app-label Required="true" LabelText="Email" ></app-label>
+                <input class="form-control" formControlName="email" [(ngModel)]="CompanyData.email" />
+                <app-validation-message propertyName="email" [MessageArray]="CompanyValidationMessages" [FormGroupName]="CompanyForm"></app-validation-message>
+              </div>
+        </div>
+  </form>
+

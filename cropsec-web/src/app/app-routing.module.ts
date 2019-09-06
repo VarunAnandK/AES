@@ -23,6 +23,25 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: './Admin/User/user-list/user-list.module#UserListModule'
   },
+  {
+    path: 'Admin/UserRoleList',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    loadChildren: './Admin/UserRole/user_role-list/user_role-list.module#UserRoleListModule'
+  },
+  {
+    path: 'Admin/CompanyList',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    loadChildren: './Admin/Company/company-list/company-list.module#CompanyListModule'
+  },
+
+  {
+    path: 'Admin/Company/:Id',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    loadChildren: './Admin/Company/company/company.module#CompanyModule'
+  },
 
 ];
 

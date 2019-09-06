@@ -12,61 +12,88 @@ class Repository implements IRepository
 
     public function GetAll()
     {
-        return $this->model->get();
+        $company_id = 0;
+        if (CommonHelper::$CurrentUser != null) {
+            $company_id = CommonHelper::$CurrentUser->company_id;
+        }
+
+        return $this->model->where('company_id', $company_id)->get();
     }
 
     public function GetById($id)
     {
-        $result = $this->model->where("id", $id)->first();
+        $company_id = 0;
+        if (CommonHelper::$CurrentUser != null) {
+            $company_id = CommonHelper::$CurrentUser->company_id;
+        }
+
+        $result = $this->model->where("id", $id)->where('company_id', $company_id)->first();
         return $result;
     }
     public function GetByAnyColumn($field, $value)
     {
-        $result = $this->model->where($field, $value)->get();
+        $company_id = 0;
+        if (CommonHelper::$CurrentUser != null) {
+            $company_id = CommonHelper::$CurrentUser->company_id;
+        }
+        $result = $this->model->where($field, $value)->where('company_id', $company_id)->get();
         return $result;
     }
 
+
+
     public function Insert(array $data)
     {
-        try {
-            if (CommonHelper::$CurrentUser == null) {
-                $data["created_by_id"] = 0;
-            } else {
-                $data["created_by_id"] = CommonHelper::$CurrentUser->id;
-            }
-            $result = $this->model->create($data);
-            return response(["Type" => "S", "Message" => "Data inserted successfully", "AdditionalData" => [], "Id" => $result["id"]]);
-        } catch (QueryException $exception) {
-            return response(["Type" => "E", "Message" => $exception->errorInfo[2]]);
+        if (CommonHelper::$CurrentUser == null) {
+            $data["created_by_id"] = 0;
+            $data["company_id"] = 0;
+        } else {
+            $data["created_by_id"] = CommonHelper::$CurrentUser->id;
+            $data["company_id"] = CommonHelper::$CurrentUser->company_id;
         }
+        return $this->model->create($data);
     }
 
     public function Update(array $data)
     {
-        try {
-            if (CommonHelper::$CurrentUser == null) {
-                $data["updated_by_id"] = 0;
-            } else {
-                $data["updated_by_id"] = CommonHelper::$CurrentUser->id;
-            }
-            $result = $this->model->where('id', $data['id']);
-            $result->update($data);
-            return response(["Type" => "S", "Message" => "Data updated successfully"]);
-        } catch (QueryException $exception) {
-            return response(["Type" => "E", "Message" => $exception->errorInfo[2]]);
+        if (CommonHelper::$CurrentUser == null) {
+            $data["updated_by_id"] = 0;
+            $data["company_id"] = 0;
+        } else {
+            $data["updated_by_id"] = CommonHelper::$CurrentUser->id;
+            $data["company_id"] = CommonHelper::$CurrentUser->company_id;
         }
+        $result = $this->model->where('id', $data['id']);
+        return $result->update($data);
     }
 
     public function Delete($id)
     {
-        try {
-            $result = $this->model->find($id);
-            $result->delete();
-            return response(["Type" => "S", "Message" => "Data deleted successfully"]);
-        } catch (QueryException $exception) {
-            return response(["Type" => "E", "Message" => $exception->errorInfo[2]]);
-        }
+        $result = $this->model->find($id);
+        return $result->delete();
     }
+
+
+    public function GetByAnyColumnInclude($field, $value, $array = [])
+    {
+        $company_id = 0;
+        if (CommonHelper::$CurrentUser != null) {
+            $company_id = CommonHelper::$CurrentUser->company_id;
+        }
+        $result = $this->model->where($field, $value)->where('company_id', $company_id)->with($array)->get();
+        return $result;
+    }
+
+    public function Include($array = [])
+    {
+        $company_id = 0;
+        if (CommonHelper::$CurrentUser != null) {
+            $company_id = CommonHelper::$CurrentUser->company_id;
+        }
+
+        return $this->model->with($array)->where('company_id', $company_id)->get();
+    }
+
 
     public function GetByPage($page = 1, $limit = 10)
     {

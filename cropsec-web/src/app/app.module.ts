@@ -15,7 +15,7 @@ import { AlphaInterceptor } from 'src/Helper/http.interceptor';
   declarations: [
     AppComponent,
     MainComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,8 @@ import { CommonHelper } from 'src/Helper/CommonHelper';
 declare var $: any;
 
 @Directive({
-  selector: '[appUidropdown]'
+  selector: '[appUidropdown]',
+  providers : [NgModel]
 })
 export class UidropdownDirective implements OnInit {
   @Output() UIOnChange: EventEmitter<any> = new EventEmitter();

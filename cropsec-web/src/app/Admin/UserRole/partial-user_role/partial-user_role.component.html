@@ -1,0 +1,13 @@
+<form [formGroup]="UserRoleForm">
+  <div class="row">
+    <div class="col-12">
+        <app-label Required="true" LabelText="Name" ></app-label>
+      <input class="form-control" formControlName="name" [(ngModel)]="UserRoleData.name" />
+      <app-validation-message propertyName="name" [MessageArray]="UserRoleValidationMessages" [FormGroupName]="UserRoleForm"></app-validation-message>
+    </div>
+  </div>
+</form>
+<hr>
+<button type="button" *ngIf="UserRoleData.id == 0" [disabled]="UserRoleForm.invalid"  class="btn btn-success" style="width: 100px;" (click)="CreateOrUpdate()">Save</button>
+<button type="button" *ngIf="UserRoleData.id > 0" [disabled]="UserRoleForm.invalid" class="btn btn-success" style="width: 100px;" (click)="CreateOrUpdate()">Update</button>
+<!-- <button type="button" *ngIf="UserData.id > 0" class="btn btn-success" style="width: 100px;" (click)="Delete()" class="ui-button-danger pull-right">Delete</button> -->

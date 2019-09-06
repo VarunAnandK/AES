@@ -1,11 +1,17 @@
   <form [formGroup]="UserForm">
     <div class="row">
-      <div class="col-12">
+      <div class="col-6">
           <app-label Required="true" LabelText="Name" ></app-label>
         <input class="form-control" formControlName="name" [(ngModel)]="UserData.name" />
         <app-validation-message propertyName="name" [MessageArray]="UserValidationMessages" [FormGroupName]="UserForm"></app-validation-message>
       </div>
-    </div>
+    <div class="col-6">
+    <app-label Required="true" LabelText="Name" ></app-label>
+    <select [(ngModel)]="UserData.user_role_id" appUidropdown formControlName="user_role_id"  id="user_role_id" UIURL="UserRoleList" UITextField="name" UIValueField="id" style="width: 100%;">
+        <app-validation-message propertyName="user_role_id" [MessageArray]="UserValidationMessages" [FormGroupName]="UserForm"></app-validation-message>
+    </select>
+  </div>
+</div>
     <div class="row">
     <div class="col-12">
         <app-label Required="true" LabelText="Email" ></app-label>

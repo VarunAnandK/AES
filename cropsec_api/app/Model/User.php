@@ -21,4 +21,9 @@ class User extends Model
     //     'updated_by_id',
     //     'updated_on'
     // ];
+
+    public function user_role()
+    {
+        return  $this->belongsTo('App\Model\user_role', "user_role_id", "id");
+    }
 }

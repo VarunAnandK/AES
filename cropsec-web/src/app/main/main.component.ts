@@ -41,7 +41,9 @@ export class MainComponent implements OnInit {
     this.Menu = new Array<MenuModel>();
     this.Menu = [
       { Module: "Admin", Label: "Dashboard", RouterLink: "Admin/Dashboard", Icon: "fas fa-tachometer-alt", Visiable: true },
+      { Module: "Admin", Label: "User Role", RouterLink: "Admin/UserRoleList", Icon: "fas fa-tachometer-alt", Visiable: true },
       { Module: "Admin", Label: "User", RouterLink: "Admin/UserList", Icon: "fas fa-tachometer-alt", Visiable: true },
+      { Module: "Admin", Label: "Company", RouterLink: "Admin/CompanyList", Icon: "fas fa-tachometer-alt", Visiable: true },
     ];
     this.Menu = this.Menu.filter(e => e.Module == this.helper.CurrentModule);
   }

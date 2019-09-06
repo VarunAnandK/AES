@@ -14,9 +14,20 @@ use Illuminate\Http\Request;
 */
 
 Route::post('Login', 'UserController@Login');
+Route::get('Decrypt/{id}', 'UserController@PasswordDecrypt');
+
 Route::middleware('APIToken')->group(function () {
+    Route::get('UserRoleList', 'UserRoleController@UserRoleList');
+    Route::post('UserRoleInsert', 'UserRoleController@UserRoleInsert');
+    Route::post('UserRoleUpdate', 'UserRoleController@UserRoleUpdate');
+
     Route::post('UserInsert', 'UserController@UserInsert');
     Route::post('UserUpdate', 'UserController@UserUpdate');
+
+    Route::get('CompanyList', 'CompanyController@CompanyList');
+    Route::get('CompanyById/{Id}', 'CompanyController@CompanyById');
+    Route::post('CompanyInsert', 'CompanyController@CompanyInsert');
+    Route::post('CompanyUpdate', 'CompanyController@CompanyUpdate');
 
     Route::post('Register', 'UserController@Register');
     Route::get('UserList', 'UserController@UserList');

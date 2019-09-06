@@ -18,6 +18,8 @@ class CreateUserTable extends Migration
             $table->string("name")->unique()->index();
             $table->string("email")->unique()->index();
             $table->text("password");
+            $table->bigInteger("user_role_id")->unsigned();
+            $table->foreign("user_role_id")->references("id")->on("user_role")->onDelete("restrict");
             $table->text("api_token")->nullable();
         });
     }

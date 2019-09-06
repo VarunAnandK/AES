@@ -15,6 +15,8 @@ interface IRepository
 
     public function Delete($id);
 
+    public function Include($relations);
+
     public function GetByPage($page = 1, $limit = 10);
 
 }

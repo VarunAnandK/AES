@@ -19,6 +19,10 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.GridModel = [
       {
+        field: "user_role.name",
+        title: "User Role"
+      },
+      {
         field: "name",
         title: "Name"
       },

@@ -39,6 +39,10 @@ export class PartialuserComponent implements OnInit {
       password: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      user_role_id: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+
     });
   }
   UserValidationMessages = {
@@ -52,7 +56,9 @@ export class PartialuserComponent implements OnInit {
     'password': [
       { type: 'required', message: 'Password is required.' },
     ],
-
+    'user_role_id': [
+      { type: 'required', message: 'Password is required.' },
+    ],
   };
   CreateOrUpdate() {
     this.helper.ShowSpinner();
@@ -61,7 +67,7 @@ export class PartialuserComponent implements OnInit {
         if (res.Type == "S") {
           debugger
           this.helper.SucessToastr(res.Message, "User");
-          this.popupref.close("sadasdasd");
+          this.popupref.close();
         } else {
           this.helper.ErrorToastr(res.Message, "User");
         }
